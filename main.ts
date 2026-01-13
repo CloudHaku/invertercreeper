@@ -43,16 +43,22 @@ function 中空層 (外尺寸: number, 內尺寸: number, 中: Position, 材料:
 }
 function 網狀結構 (外層: number, 奇數: boolean, num: number, 材料: string) {
     跳格 = 外層 * -1
+    blocks.fill(
+    blocks.blockWithData(CHERRY_TRAPDOOR, 12),
+    pos(外層, 層數, 外層 * -1),
+    pos(外層 * -1, 層數, 外層),
+    FillOperation.Replace
+    )
     while (跳格 <= 外層) {
         blocks.fill(
-        GRASS,
-        pos(0, 層數, 0),
-        pos(0, 0, 0),
+        blocks.blockWithData(blocks.blockByName("stone"), 12),
+        pos(外層, 層數, 外層 * -1),
+        pos(外層 * -1, 層數, 外層),
         FillOperation.Replace
         )
         blocks.fill(
         GRASS,
-        pos(0, 0, 0),
+        pos(0, 層數, 0),
         pos(0, 0, 0),
         FillOperation.Replace
         )
